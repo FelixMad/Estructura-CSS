@@ -1,0 +1,149 @@
+<html>
+  <head>
+    <style>
+      body{background: black;color:#9e9e9e;}
+      .commentary{color:grey}
+      .element{color:green}
+      .class{color:red}
+      .id{color:orange}
+      .combinator{color:purple}
+      .property{color:#d49898}
+      .value{color:#80bdff}
+      .mediaquery{color:#8e562c}
+      .pseudoclasses{color:#03A9F4;}
+      .attributeselectors{color:#a715af;}
+      .selector{color:#8ece4c;}
+      .weight{opacity: .5;}
+      .outstanding{background:#272727}
+    </style>
+  </head>
+  <body>
+    <pre>
+      ESTRUCTURA v1.0 - 06/09/2016
+
+      La organización de la estructura consistira en:
+      <strong># RESET</strong>
+        Anula los posibles estilos heredados de otros CSSs o del navegador.
+
+      <strong># DISEÑO</strong>
+        Incorporación del diseño final.
+
+        <strong># CSSs GLOBALES.</strong>
+          CSSs de los elementos, clases e IDs a nivel global.
+
+        <strong># CSSs LOCALES.</strong>
+          CSSs de los elementos, clases e IDs a nivel local por secciones.
+
+          <strong># RESPONSIVE</strong>
+            Responsive de los valores locales de la sección a la que pertenece.
+
+
+      <strong>PRIORIDADES DE COLOCACIÓN</strong>
+      El orden de colocación de los CSSs es muy importante.
+      Llendo de los CSSs más globales a más locales.
+      Esto significa que los CSSs mas adelantados serian los que afecten de una manera general.
+      Y los más atrasados serian los que afecten a detalles muy especificos.
+
+      De igual manera se haran los detalles dentro de los bloques de CSS.
+      Primero los <span class="element">ELEMENTOS</span> que afecta de una manera más general, seguido de las <span class="class">CLASS</span> y terminando en los <span class="id">IDs</span>
+        1º <span class="element">ELEMENTO</span>
+        2º <span class="class">CLASS</span>
+        3º <span class="id">ID</span>
+
+      <strong>EVOLUCIÓN DE ESTILOS EN CASCADA</strong>
+      Segun la estructura de abajo se puede ver el proceso evolutivo de la CLASS '.show' desde el resetado de
+      CSSs heredados que no queremos, hasta los estilos que son condicionados por la estructura.
+
+      <strong>CARGA DE CSS</strong>
+      Los CSSs pueden ser afectados por otros CSS que no podemos controlar.
+      Por eso, para que las propiedades no se vean afectadas, se añade al
+      path ELEMENTOS o IDs que pueda afectar al CSSs por igual (ejem. <span class="element">html</span> <span class="element">head</span> <span class="combinator">+</span> <span class="element">body</span>).
+
+      Esto daria más prioridad a nuestro CSS respecto a otros CSSs externos.
+
+      Se tenda que mantener la formula en todo el CSS para que las prioridades no se vean afectadas.
+
+
+    <span class="commentary">/*RESET DEL CSS ANTERIOR*/</span>
+      <span class="weight"><span class="element">html</span> <span class="element">head</span> <span class="combinator">+</span> <span class="element">body</span></span>{<span class="property">font-size</span>:<span class="value">inherit</span>;<span class="property">width</span>:<span class="value">auto</span>;...}
+      <span class="weight"><span class="element">html</span> <span class="element">head</span> <span class="combinator">+</span> <span class="element">body</span></span> <span class="element">a</span>{<span class="property">font-size</span>:<span class="value">inherit</span>;<span class="property">width</span>:<span class="value">auto</span>;...}
+      <span class="outstanding"><span class="weight"><span class="element">html</span> <span class="element">head</span> <span class="combinator">+</span> <span class="element">body</span></span> <span class="class">.show</span>{<span class="property">font-size</span>:<span class="value">inherit</span>;<span class="property">width</span>:<span class="value">auto</span>;...} <-- La herencia de CSSs de la class 'show' es reseteada</span>
+      <span class="weight"><span class="element">html</span> <span class="element">head</span> <span class="combinator">+</span> <span class="element">body</span></span> <span class="class">.hide</span>{<span class="property">font-size</span>:<span class="value">inherit</span>;<span class="property">width</span>:<span class="value">auto</span>;...}
+      <span class="weight"><span class="element">html</span> <span class="element">head</span> <span class="combinator">+</span> <span class="element">body</span></span> <span class="id">#head</span>{<span class="property">font-size</span>:<span class="value">inherit</span>;<span class="property">width</span>:<span class="value">auto</span>;...}
+      <span class="weight"><span class="element">html</span> <span class="element">head</span> <span class="combinator">+</span> <span class="element">body</span></span> <span class="id">#document</span>{<span class="property">font-size</span>:<span class="value">inherit</span>;<span class="property">width</span>:<span class="value">auto</span>;...}
+      <span class="weight"><span class="element">html</span> <span class="element">head</span> <span class="combinator">+</span> <span class="element">body</span></span> <span class="id">#resultlist</span>{<span class="property">font-size</span>:<span class="value">inherit</span>;<span class="property">width</span>:<span class="value">auto</span>;...}
+    <span class="commentary">/*RESET DEL CSS ANTERIOR*/</span>
+
+    <span class="commentary">/*NUEVO DISEÑO CSS*/</span>
+      <span class="commentary">/*VALORES GLOBALES DE LOS ELEMENTOS Y CLASES*/</span>
+        <span class="weight"><span class="element">html</span> <span class="element">head</span> <span class="combinator">+</span> <span class="element">body</span></span>{...}
+        <span class="weight"><span class="element">html</span> <span class="element">head</span> <span class="combinator">+</span> <span class="element">body</span></span> <span class="selector">*</span>{...}
+        <span class="weight"><span class="element">html</span> <span class="element">head</span> <span class="combinator">+</span> <span class="element">body</span></span> <span class="element">a</span>{...}
+        <span class="weight"><span class="element">html</span> <span class="element">head</span> <span class="combinator">+</span> <span class="element">body</span></span> <span class="element">a</span><span class="pseudoclasses">:hover</span>{...}
+        <span class="weight"><span class="element">html</span> <span class="element">head</span> <span class="combinator">+</span> <span class="element">body</span></span> <span class="attributeselectors">[type="text"]</span>{...}
+        <span class="outstanding"><span class="weight"><span class="element">html</span> <span class="element">head</span> <span class="combinator">+</span> <span class="element">body</span></span> <span class="class">.show</span>{...} <- Se añade a la class 'show' los nuevos valores globales</span>
+        <span class="weight"><span class="element">html</span> <span class="element">head</span> <span class="combinator">+</span> <span class="element">body</span></span> <span class="class">.hide</span>{...}
+      <span class="commentary">/*VALORES GLOBALES DE LOS ELEMENTOS Y CLASES*/</span>
+
+      <span class="commentary">/*VALORES LOCALES DE LOS ELEMENTOS Y CLASES SEPARADOS POR SECCIONES*/</span>
+        <span class="commentary">/*SECCION DEL HEADER*/</span>
+          <span class="weight"><span class="element">html</span> <span class="element">head</span> <span class="combinator">+</span> <span class="element">body</span></span> <span class="id">#head</span> <span class="element">a</span>{...}
+          <span class="weight"><span class="element">html</span> <span class="element">head</span> <span class="combinator">+</span> <span class="element">body</span></span> <span class="id">#head</span> <span class="element">p</span>{...}
+          <span class="weight"><span class="element">html</span> <span class="element">head</span> <span class="combinator">+</span> <span class="element">body</span></span> <span class="id">#head</span> <span class="element">h1</span>{...}
+          <span class="outstanding"><span class="weight"><span class="element">html</span> <span class="element">head</span> <span class="combinator">+</span> <span class="element">body</span></span> <span class="id">#head</span> <span class="class">.show</span>{...} <- Se añade a la class 'show' los nuevos valores locales ajustados a la sección 'head'</span>
+          <span class="weight"><span class="element">html</span> <span class="element">head</span> <span class="combinator">+</span> <span class="element">body</span></span> <span class="id">#head</span> <span class="class">.hide</span>{...}
+          <span class="weight"><span class="element">html</span> <span class="element">head</span> <span class="combinator">+</span> <span class="element">body</span></span> <span class="id">#head</span> <span class="class">.up</span>{...}
+          <span class="weight"><span class="element">html</span> <span class="element">head</span> <span class="combinator">+</span> <span class="element">body</span></span> <span class="id">#head</span> <span class="class">.down</span>{...}
+          <span class="weight"><span class="element">html</span> <span class="element">head</span> <span class="combinator">+</span> <span class="element">body</span></span> <span class="id">#head</span> <span class="class">.show</span> <span class="class">.up</span>{...}
+          <span class="weight"><span class="element">html</span> <span class="element">head</span> <span class="combinator">+</span> <span class="element">body</span></span> <span class="id">#head</span> <span class="class">.show</span> <span class="class">.down</span>{...}
+
+          <span class="commentary">/*RESPONSIVE DE LA SECCION ANTERIOR*/</span>
+            <span class="mediaquery">@media (max-width: 1500px){</span>
+              <span class="weight"><span class="element">html</span> <span class="element">head</span> <span class="combinator">+</span> <span class="element">body</span></span> <span class="id">#head</span> <span class="element">a</span>{...}
+              <span class="weight"><span class="element">html</span> <span class="element">head</span> <span class="combinator">+</span> <span class="element">body</span></span> <span class="id">#head</span> <span class="element">p</span>{...}
+              <span class="weight"><span class="element">html</span> <span class="element">head</span> <span class="combinator">+</span> <span class="element">body</span></span> <span class="id">#head</span> <span class="element">h1</span>{...}
+              <span class="outstanding"><span class="weight"><span class="element">html</span> <span class="element">head</span> <span class="combinator">+</span> <span class="element">body</span></span> <span class="id">#head</span> <span class="class">.show</span>{...} <- Valores locales de 'show' en 'head' en responsive. Se añade o resetea valores anteriores segun se necesite</span>
+              <span class="weight"><span class="element">html</span> <span class="element">head</span> <span class="combinator">+</span> <span class="element">body</span></span> <span class="id">#head</span> <span class="class">.hide</span>{...}
+              <span class="weight"><span class="element">html</span> <span class="element">head</span> <span class="combinator">+</span> <span class="element">body</span></span> <span class="id">#head</span> <span class="class">.up</span>{...}
+              <span class="weight"><span class="element">html</span> <span class="element">head</span> <span class="combinator">+</span> <span class="element">body</span></span> <span class="id">#head</span> <span class="class">.down</span>{...}
+              <span class="outstanding"><span class="weight"><span class="element">html</span> <span class="element">head</span> <span class="combinator">+</span> <span class="element">body</span></span> <span class="id">#head</span> <span class="class">.active</span> <span class="class">.show</span>{...} <- Condicional de '.show' en '#head' que solo se activaria en caso de ser hijo de '.active'</span>
+              <span class="outstanding"><span class="weight"><span class="element">html</span> <span class="element">head</span> <span class="combinator">+</span> <span class="element">body</span></span> <span class="id">#head</span> <span class="class">.active</span> <span class="combinator">~</span> <span class="class">.class</span> <span class="class">.show</span>{...} <-<small>Condicional de '.show' en '#head' que solo se activaria en caso de que '.active' se encuentre como ancestro en la herencia</small></span>
+            <span class="mediaquery">}</span>
+            <span class="mediaquery">@media (max-width: 1000px){</span>
+              ...
+            <span class="mediaquery">}</span>
+            <span class="mediaquery">@media (max-width: 500px){</span>
+              ...
+            <span class="mediaquery">}</span>
+
+          <span class="commentary">/*RESPONSIVE DE LA SECCION ANTERIOR*/</span>
+        <span class="commentary">/*SECCION DEL HEADER*/</span>
+
+        <span class="commentary">/*SECCION DEL DOCUMENTO*/</span>
+          <span class="weight"><span class="element">html</span> <span class="element">head</span> <span class="combinator">+</span> <span class="element">body</span></span> <span class="id">#document</span> <span class="element">a</span>{...}
+          ...
+          <span class="commentary">/*RESPONSIVE DE LA SECCION ANTERIOR*/</span>
+            <span class="mediaquery">@media (max-width: 1279px){</span>
+              <span class="weight"><span class="element">html</span> <span class="element">head</span> <span class="combinator">+</span> <span class="element">body</span></span> <span class="id">#document</span> <span class="element">a</span>{...}
+              ...
+            <span class="mediaquery">}</span>
+          <span class="commentary">/*RESPONSIVE DE LA SECCION ANTERIOR*/</span>
+        <span class="commentary">/*SECCION DEL DOCUMENTO*/</span>
+
+        <span class="commentary">/*SECCION DEL LISTA DE RESULTADOS*/</span>
+          <span class="weight"><span class="element">html</span> <span class="element">head</span> <span class="combinator">+</span> <span class="element">body</span></span> <span class="id">#resultlist</span> <span class="element">a</span>{...}
+          ...
+          <span class="commentary">/*RESPONSIVE DE LA SECCION ANTERIOR*/</span>
+            <span class="mediaquery">@media (max-width: 1279px){</span>
+              <span class="weight"><span class="element">html</span> <span class="element">head</span> <span class="combinator">+</span> <span class="element">body</span></span> <span class="id">#resultlist</span> <span class="element">a</span>{...}
+              ...
+            <span class="mediaquery">}</span>
+          <span class="commentary">/*RESPONSIVE DE LA SECCION ANTERIOR*/</span>
+        <span class="commentary">/*SECCION DEL LISTA DE RESULTADOS*/</span>
+
+      <span class="commentary">/*VALORES LOCALES DE LOS ELEMENTOS Y CLASES SEPARADOS POR SECCIONES*/</span>
+    <span class="commentary">/*NUEVO DISEÑO CSS*/</span>
+
+    </pre>
+  </body>
+</html>
